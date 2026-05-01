@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mira Vista Foundation</title>
+  <meta name="description" content="The Mira Vista Foundation is a parent-powered nonprofit forming to enrich the educational experience for every student at Mira Vista K–8 School in Richmond, CA.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #1a6b5a;
+      --teal-dark:   #0f4a3a;
+      --teal-light:  #2a8a74;
+      --gold:        #d99020;
+      --gold-light:  #f0b84a;
+      --dark:        #1a2229;
+      --mid:         #4a5a65;
+      --light:       #f4f7f6;
+      --white:       #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 3px solid var(--gold);
+      padding: 0.9rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      font-family: system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-name {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--teal);
+      line-height: 1.2;
+    }
+
+    .logo-sub {
+      display: block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.75rem;
+    }
+
+    nav a {
+      font-family: system-ui, sans-serif;
+      font-size: 0.875rem;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    nav a:hover { color: var(--teal); }
+
+    @media (max-width: 540px) { nav { display: none; } }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(140deg, var(--teal) 0%, var(--teal-dark) 100%);
+      color: var(--white);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+      border: 1px solid rgba(240,184,74,0.5);
+      background: rgba(240,184,74,0.12);
+      color: var(--gold-light);
+      font-family: system-ui, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5.5vw, 3.5rem);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero p {
+      font-family: system-ui, sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 2.25rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.9rem;
+      border-radius: 5px;
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .btn-gold:hover { background: var(--gold-light); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--white);
+    }
+
+    /* ── Shared layout ── */
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    .section-alt {
+      background: var(--light);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      color: var(--teal);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      font-family: system-ui, sans-serif;
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* ── About two-col ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 660px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .about-body p {
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .about-body a {
+      color: var(--teal);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .mission-box {
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 2.5rem;
+    }
+
+    .mission-box .eyebrow { color: var(--gold-light); }
+
+    .mission-box h2 { color: var(--white); font-size: 1.5rem; }
+
+    .mission-box p {
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      line-height: 1.75;
+      margin-top: 0.75rem;
+    }
+
+    /* ── Programs ── */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .prog-card {
+      background: var(--white);
+      border: 1px solid #dde6e3;
+      border-top: 4px solid var(--teal-light);
+      border-radius: 6px;
+      padding: 1.6rem 1.4rem;
+    }
+
+    .prog-card h3 {
+      font-size: 0.95rem;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .prog-card p {
+      font-family: system-ui, sans-serif;
+      font-size: 0.83rem;
+      color: var(--mid);
+      line-height: 1.55;
+    }
+
+    /* ── Get involved ── */
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .inv-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem 1.75rem;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    .inv-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--light);
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .inv-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .inv-card h3 {
+      font-size: 1.05rem;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .inv-card p {
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.75;
+    }
+
+    footer strong { color: var(--white); }
+
+    footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    .footer-nav {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .footer-nav a {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+    }
+
+    .footer-nav a:hover { color: var(--white); }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-mark">MV</div>
+      <div class="logo-name">
+        Mira Vista Foundation
+        <span class="logo-sub">Richmond, CA</span>
+      </div>
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#involved">Get Involved</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Just Getting Started</div>
+    <h1>Supporting <span>Mira Vista</span><br>students &amp; families</h1>
+    <p>A parent-powered nonprofit forming to fund enrichment programs for every student at Mira Vista K–8 School.</p>
+    <div class="btn-row">
+      <a href="#involved" class="btn btn-gold">Get Involved</a>
+      <a href="#about" class="btn btn-outline">Learn More</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-body">
+          <div class="eyebrow">Who We Are</div>
+          <h2>A community coming together for our kids</h2>
+          <p>The Mira Vista Foundation is a newly forming parent-run, volunteer-driven nonprofit. We're here to fund enrichment programs that go beyond what the district can provide — and to build a stronger sense of community around our school.</p>
+          <p>We're inspired by neighboring school foundations like the <a href="https://www.maderaschool.org/mef" target="_blank" rel="noopener">Madera Elementary Foundation</a> and the <a href="https://kensington.wccusd.net/activities/kensington-education-foundation-kef/about-kef" target="_blank" rel="noopener">Kensington Education Foundation</a>, who have built thriving programs for their school communities right here in West Contra Costa.</p>
+          <p>We're just getting started — and we'd love for you to help shape what we become.</p>
+        </div>
+        <div class="mission-box">
+          <div class="eyebrow">Our Mission</div>
+          <h2>Enriching education for every Mira Vista student</h2>
+          <p>We raise funds to support programs that enhance the classroom experience, expand access to arts and sciences, and strengthen the community that makes Mira Vista special.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section class="section" id="programs">
+    <div class="container">
+      <div class="eyebrow">What We Support</div>
+      <h2>Programs that make a difference</h2>
+      <p class="lead">We aim to fund enrichment programs and resources not covered by the district budget. Here's what we have in mind:</p>
+
+      <div class="programs-grid">
+        <div class="prog-card">
+          <h3>Arts &amp; Music</h3>
+          <p>Visual arts, music instruction, and creative programs that give every child a way to express themselves.</p>
+        </div>
+        <div class="prog-card">
+          <h3>Science &amp; STEM</h3>
+          <p>Hands-on science, technology access, and inquiry-based programs that spark curiosity and critical thinking.</p>
+        </div>
+        <div class="prog-card">
+          <h3>Literacy &amp; Library</h3>
+          <p>Books, reading support, and a well-stocked library so every student finds stories that speak to them.</p>
+        </div>
+        <div class="prog-card">
+          <h3>Garden &amp; Outdoors</h3>
+          <p>School garden programs that connect students with nature, nutrition, and hands-on learning.</p>
+        </div>
+        <div class="prog-card">
+          <h3>Physical Education</h3>
+          <p>Active play, fitness, and wellness programs that support healthy development.</p>
+        </div>
+        <div class="prog-card">
+          <h3>Classroom Resources</h3>
+          <p>Supplies and materials so teachers can focus on what matters most.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved -->
+  <section class="section section-alt" id="involved">
+    <div class="container">
+      <div class="eyebrow">Join Us</div>
+      <h2>Help build something great</h2>
+      <p class="lead">We're just getting off the ground and need parents, community members, and local partners to help us grow.</p>
+
+      <div class="cards-row">
+        <div class="inv-card">
+          <div class="inv-icon">
+            <!-- hand-raised icon -->
+            <svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-3H6v3Z"/></svg>
+          </div>
+          <h3>Volunteer</h3>
+          <p>Whether you have an hour or a dedicated role in mind, we need people who care. Help plan events, run programs, or handle logistics.</p>
+        </div>
+        <div class="inv-card">
+          <div class="inv-icon">
+            <!-- heart icon -->
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Donate</h3>
+          <p>We're establishing our nonprofit status. Every future dollar goes directly toward enriching programs for Mira Vista students.</p>
+        </div>
+        <div class="inv-card">
+          <div class="inv-icon">
+            <!-- megaphone icon -->
+            <svg viewBox="0 0 24 24"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+          </div>
+          <h3>Spread the Word</h3>
+          <p>Tell a neighbor, share with your class's parent group, or invite a local business to partner with us. Community starts with connection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <strong>Mira Vista Foundation</strong><br>
+    Supporting Mira Vista K–8 School &mdash; Richmond, CA<br>
+    <!-- Update with your contact email -->
+    <a href="mailto:hello@miravistafoundation.org">hello@miravistafoundation.org</a>
+    <div class="footer-nav">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#involved">Get Involved</a>
+    </div>
+  </footer>
+
+</body>
+</html>
